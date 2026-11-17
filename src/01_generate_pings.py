@@ -1,0 +1,28 @@
+import csv
+import hashlib
+import json
+import math
+import random
+import uuid
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+#---------- Settings ----------
+SEED = 42
+BATCH_ID = "80001"
+SCHEMA_VERSION = "0.1"
+NUM_VEHICLES = 10
+PINGS_PER_VEHICLE = 10
+PING_INTERVALS_s = 30
+START_TIME_UTC = datetime(2026, 11, 2, 22, 0, 0, tzinfo=timezone.utc)
+DEPOT_LAT = -31.9522
+DEPOT_LON = 115.8605
+SPEED_LIMITS = [40, 50, 60, 70, 80, 90, 100, 110]
+
+FIELDS = [
+    "ping_id", "batch_id", "vehicle_id", "device_id", "driver_id", "timestamp_utc", "lat", "lon", "speed_kmh", "speed_limit_kmh", "ignition_on", 
+]
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
+RAW_DIR = DATA_DIR / "raw"
