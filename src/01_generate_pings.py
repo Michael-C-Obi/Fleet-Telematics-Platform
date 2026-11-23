@@ -26,3 +26,15 @@ FIELDS = [
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
+
+def make_fleet(num_vehicles):
+    """Return a dict of vehicles, each with its registered device and driver."""
+    fleet = {}
+    for i in range(1, num_vehicles + 1):
+        vehicle_id = f"VH-{i:03d}"
+        fleet[vehicle_id] = {
+            "device_id": f"DEV-{1000 + i}",
+            "driver_id": f"DRV-{i:03d}",
+        }
+    return fleet
+print(make_fleet(8))
