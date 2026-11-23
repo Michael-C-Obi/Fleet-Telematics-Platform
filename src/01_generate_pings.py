@@ -37,4 +37,10 @@ def make_fleet(num_vehicles):
             "driver_id": f"DRV-{i:03d}",
         }
     return fleet
-print(make_fleet(8))
+
+def move_point(lat, lon, heading_deg, distance_m):
+    """Move from (lat, lon) by distance_m metres in direction heading_deg."""
+    heading_rad = math.radians(heading_deg)
+    delta_lat = distance_m * math.cos(heading_rad) / 111320
+    delta_lon = distance_m * math.sin(heading_rad) / (111320 * math.cos(math.radians(lat)))
+    return lat + delta_lat, lon + delta_lon
